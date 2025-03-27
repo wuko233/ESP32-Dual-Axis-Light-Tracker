@@ -13,24 +13,6 @@ int setupDisplay() {
     return 200;
 }
 
-void display_menu() {
-    while (1) {
-        display("Display\n[1] Test text\n[2] Test image\n[0] Exit", 100);
-        String opt = get_input();
-        if (opt == "0") {
-        break;
-        }
-        if (opt == "1") {
-            display("Senpai\nCiallo~", 2000);
-        } else if (opt == "2") {
-            img_test();
-            delay(2500);
-        } else {
-            display("err!", 1000);
-        }
-    }
-}
-
 void display(const char* info, int display_time) {
     digitalWrite(LED_BUILTIN, HIGH);
     int max_Width = OLED.getDisplayWidth() / 6;
@@ -82,17 +64,9 @@ void display(const char* info, int display_time) {
         }
     }
     OLED.sendBuffer();
-    delay(20); // 确保缓冲区写入完成
+    delay(20); 
     if (display_time > 0) {
         delay(display_time);
     }
     digitalWrite(LED_BUILTIN,LOW);
-}
-
-void img_test() {
-    OLED.clearBuffer();
-    // 显示全屏图像
-    OLED.drawXBM(0, 0, 128, 64, imageData);
-    OLED.sendBuffer();
-    delay(50);
 }
