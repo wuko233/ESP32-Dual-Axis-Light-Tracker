@@ -9,10 +9,3 @@ int setupLDR() {
     pinMode(LDR_IN4, INPUT);
     return 200;
 }
-
-struct SensorData {
-  int data1;
-  int data2;
-  int data3;
-  int data4;
-};
